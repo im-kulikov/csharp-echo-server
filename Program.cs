@@ -87,6 +87,8 @@ namespace SimpleWebServer
 
             Thread.Sleep(Timeout.Infinite);
 
+            //Under mono if you deamonize a process a Console.ReadLine with cause an EOF 
+            //so we need to block another way
             if (args.Any(s => s.Equals("-d", StringComparison.CurrentCultureIgnoreCase)))
             {
                 Thread.Sleep(Timeout.Infinite);
