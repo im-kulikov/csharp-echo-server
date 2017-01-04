@@ -1,3 +1,3 @@
 FROM mono:onbuild
 
-CMD [ "mono",  "./server.exe" ]
+ENTRYPOINT /usr/bin/mono ./server.exe

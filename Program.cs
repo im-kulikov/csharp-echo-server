@@ -2,6 +2,7 @@
 using System.Net;
 using System.Threading;
 using System.Text;
+using System.Linq;
 
 namespace SimpleWebServer
 {
@@ -82,8 +83,18 @@ namespace SimpleWebServer
         {
             WebServer ws = new WebServer(SendResponse, "http://+:8080/");
             ws.Run();
-            Console.WriteLine("A simple webserver. Press a key to quit.");
-            Console.ReadKey();
+            Console.WriteLine("A simple webserver. Press Enter quit.");
+
+            Thread.Sleep(Timeout.Infinite);
+
+            if (args.Any(s => s.Equals("-d", StringComparison.CurrentCultureIgnoreCase)))
+            {
+                Thread.Sleep(Timeout.Infinite);
+            }
+            else
+            {
+                Console.ReadKey();
+            }
             ws.Stop();
         }
 
